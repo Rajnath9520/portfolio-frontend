@@ -3,20 +3,24 @@ import { Link } from 'react-router-dom';
 import { Mail, Download, Github, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../utils/constants';
+import img1 from '../assets/rajnath2.webp';
+import img2 from '../assets/play.jpg';
+import img3 from '../assets/rajnath.jpg';
+
 
 
 
 const SLIDES = [
   { 
-    image: './rajnath2.webp', 
+    image: img1, 
     title: "I Code", 
   },
   { 
-    image: './play.jpg ', 
+    image: img2, 
     title: "I Play",  
   },
   { 
-    image: './rajnath.jpg', 
+    image: img3, 
     title: "I Evolve",  
   },
 ];
@@ -116,65 +120,57 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Image Slideshow  */}
-          <motion.div 
-            className="flex flex-col items-center justify-center order-1 lg:order-2"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-          >
-            {/* Carousel Container */}
-            <div 
-              className="relative w-full max-w-sm h-96 sm:h-[480px]"
-              onMouseEnter={() => setIsHovering(true)}
-              onMouseLeave={() => setIsHovering(false)}
-            >
-              <AnimatePresence initial={false} custom={direction} mode="wait">
-                <motion.div
-                  key={index}
-                  custom={direction}
-                  variants={slideVariants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                    x: { type: "spring", stiffness: 300, damping: 30 },
-                    opacity: { duration: 0.3 },
-                  }}
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <div className="relative w-full h-full flex items-center justify-center">
-                    <motion.img
-                      src={SLIDES[index].image}
-                      alt={SLIDES[index].title}
-                      className="w-64 sm:w-80 h-80 sm:h-96 rounded-3xl object-cover shadow-2xl"
-                      style={{
-                        boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5), 0 0 50px rgba(250, 204, 21, 0.15)",
-                      }}
-                      whileHover={{ scale: 1.02 }}
-                      transition={{ duration: 0.4 }}
-                    />
-                  </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+        {/* Image Slideshow  */} 
+<motion.div 
+  className="flex flex-col items-center justify-center order-1 lg:order-2"
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.2, ease: "easeOut" }}
+>
+  <div 
+    className="relative w-full max-w-sm h-96 sm:h-[480px] overflow-hidden"
+    onMouseEnter={() => setIsHovering(true)}
+    onMouseLeave={() => setIsHovering(false)}
+  >
+    <AnimatePresence custom={direction} mode="wait">
+      <motion.img
+        key={index}
+        src={SLIDES[index].image}
+        custom={direction}
+        variants={slideVariants}
+        initial="enter"
+        animate="center"
+        exit="exit"
+        transition={{
+          x: { type: "spring", stiffness: 120, damping: 20 },
+          opacity: { duration: 0.4 },
+        }}
+        className="absolute inset-0 w-full h-full rounded-3xl object-cover shadow-2xl"
+        style={{
+          boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5), 0 0 50px rgba(250, 204, 21, 0.15)",
+        }}
+        whileHover={{ scale: 1.02 }}
+      />
+    </AnimatePresence>
+  </div>
 
-            {/* Caption */}
-            <AnimatePresence mode="wait">
-              <motion.div 
-                key={`caption-${index}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.4 }}
-                className="mt-10 sm:mt-12 text-center"
-              >
-                <h3 className="text-2xl sm:text-4xl font-bold text-white mb-1">
-                  {SLIDES[index].title}
-                </h3>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
+  {/* Caption */}
+  <AnimatePresence mode="wait">
+    <motion.div 
+      key={`caption-${index}`}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -10 }}
+      transition={{ duration: 0.4 }}
+      className="mt-10 sm:mt-12 text-center"
+    >
+      <h3 className="text-2xl sm:text-4xl font-bold text-white mb-1">
+        {SLIDES[index].title}
+      </h3>
+    </motion.div>
+  </AnimatePresence>
+</motion.div>
+
       </div>
     </section>
   );
