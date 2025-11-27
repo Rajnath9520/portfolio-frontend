@@ -1,6 +1,6 @@
-
 import React from 'react';
-import { Code, Brain, Database, Cpu } from 'lucide-react';
+import { Code, Brain, Database, Cpu, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { ABOUT_STATS, EXPERTISE_AREAS } from '../utils/constants';
 
 
@@ -165,7 +165,17 @@ const About = () => {
               </div> */}
             </div>
           </div>
+          
         </div>
+        <div className="text-center mt-12">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-500 transition-all mx-auto"
+            >
+              Projects
+              <ArrowRight size={20} />
+            </Link>
+          </div>
       </div>
     </div>
   );
