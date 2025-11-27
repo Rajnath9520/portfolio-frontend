@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
 import  {projectsAPI}  from '../services/api.js';
 import { PROJECT_CATEGORIES } from '../utils/constants';
@@ -130,6 +132,15 @@ const Projects = () => {
             <div className="text-gray-400">In Progress</div>
           </div>
         </div>
+        <div className="text-center mt-12">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-500 transition-all"
+            >
+              Recognitions
+              <ArrowRight size={20} />
+            </Link>
+          </div>
       </div>
     </div>
   );
