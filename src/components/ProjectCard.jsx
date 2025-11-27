@@ -47,7 +47,7 @@ const ProjectCard = ({ project }) => {
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => {
           setHovered(false);
-          setCurrentIndex(0); // reset when hover ends
+          setCurrentIndex(0); 
         }}
       >
 

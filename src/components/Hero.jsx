@@ -128,7 +128,7 @@ const Hero = () => {
   transition={{ duration: 0.2, ease: "easeOut" }}
 >
   <div 
-    className="relative w-full max-w-sm h-96 sm:h-[480px] overflow-hidden"
+    className="relative w-full max-w-[320px] h-[360px] overflow-hidden"
     onMouseEnter={() => setIsHovering(true)}
     onMouseLeave={() => setIsHovering(false)}
   >

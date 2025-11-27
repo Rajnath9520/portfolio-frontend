@@ -103,7 +103,6 @@ const About = () => {
 
         {/* Education & Experience */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
-          {/* Education */}
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700 animate-fade-in">
             <h3 className="text-2xl font-bold mb-6 text-yellow-400">Education</h3>
             <div className="space-y-6">

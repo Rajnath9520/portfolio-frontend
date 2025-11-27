@@ -45,7 +45,6 @@ const Navbar = () => {
           <div className="md:hidden absolute left-1/2 -translate-x-1/2">
   <div className="relative flex items-center gap-2">
     
-    {/* 👉 SIDE ARROW (Left side → Portfolio) */}
     <motion.div
       className="text-yellow-400 text-xl font-bold"
       animate={{ x: [0, 6, 0] }}
@@ -54,7 +53,6 @@ const Navbar = () => {
       →
     </motion.div>
 
-    {/* PORTFOLIO TEXT */}
     <Link
       to={portfolioTab.path}
       className="text-lg font-semibold text-yellow-400"
