@@ -142,17 +142,26 @@ const ProjectCard = ({ project }) => {
                 Code
               </a>
             )}
-            {project.demo && project.demo !== '#' && (
-              <a
-                href={project.demo}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors text-sm"
-              >
-                <ExternalLink size={18} />
-                Demo
-              </a>
-            )}
+            {project.demo && project.demo !== '' && project.demo !== '#' ? (
+  <a
+    href={project.demo}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors text-sm"
+  >
+    <ExternalLink size={18} />
+    Demo
+  </a>
+) : (
+  <button
+    disabled
+    className="flex items-center gap-2 text-gray-600 cursor-not-allowed text-sm"
+  >
+    <ExternalLink size={18} />
+    Demo
+  </button>
+)}
+
           </div>
 
           {project.status && (
