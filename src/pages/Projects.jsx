@@ -137,7 +137,7 @@ const Projects = () => {
               to="/projects"
               className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-500 transition-all"
             >
-              Recognitions
+              Achievements
               <ArrowRight size={20} />
             </Link>
           </div>

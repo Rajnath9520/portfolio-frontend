@@ -43,11 +43,11 @@ const ProjectCard = ({ project }) => {
     <>
       {/* CARD */}
       <div
-        className=" relative group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-2"
+        className="relative group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-2"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => {
           setHovered(false);
-          setCurrentIndex(0); 
+          setCurrentIndex(0);
         }}
       >
 
@@ -85,38 +85,17 @@ const ProjectCard = ({ project }) => {
           )}
         </div>
 
-        {/* VIDEO PREVIEW */}
-        {videoUrl && (
-          <div
-            onClick={() => setShowVideoModal(true)}
-            className="relative h-32 rounded-lg overflow-hidden cursor-pointer mb-4 group/video"
-          >
-            <iframe
-              src={embedUrl}
-              title="Video preview"
-              className="w-full h-full pointer-events-none opacity-60 group-hover/video:opacity-100 transition"
-            ></iframe>
-
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="bg-black/60 p-4 rounded-full backdrop-blur-md group-hover/video:bg-black/80 transition">
-                <Play size={30} className="text-yellow-400" />
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* INFO */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-  <h3 className="text-xl font-bold">{project.title}</h3>
+            <h3 className="text-xl font-bold">{project.title}</h3>
 
-  {project.category && (
-    <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs border border-yellow-400/20 whitespace-nowrap">
-      {project.category}
-    </span>
-  )}
-</div>
-
+            {project.category && (
+              <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs border border-yellow-400/20 whitespace-nowrap">
+                {project.category}
+              </span>
+            )}
+          </div>
 
           <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
             {project.description}
@@ -130,6 +109,7 @@ const ProjectCard = ({ project }) => {
             ))}
           </div>
 
+          {/* BUTTONS: CODE | DEMO | WATCH VIDEO */}
           <div className="flex gap-4 pt-4 border-t border-gray-700">
             {project.github && project.github !== '#' && (
               <a
@@ -142,29 +122,48 @@ const ProjectCard = ({ project }) => {
                 Code
               </a>
             )}
-            {project.demo && project.demo !== '' && project.demo !== '#' ? (
-  <a
-    href={project.demo}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors text-sm"
-  >
-    <ExternalLink size={18} />
-    Demo
-  </a>
-) : (
-  <button
-    disabled
-    className="flex items-center gap-2 text-gray-600 cursor-not-allowed text-sm"
-  >
-    <ExternalLink size={18} />
-    Demo
-  </button>
-)}
 
+            {project.demoUrl && project.demoUrl !== '' && project.demoUrl !== '#' ? (
+              <a
+                href={project.demoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors text-sm"
+              >
+                <ExternalLink size={18} />
+                Demo
+              </a>
+            ) : (
+              <button
+                disabled
+                className="flex items-center gap-2 text-gray-600 cursor-not-allowed text-sm"
+              >
+                <ExternalLink size={18} />
+                Demo
+              </button>
+            )}
+
+            {/* WATCH VIDEO BUTTON */}
+            {videoUrl ? (
+              <button
+                onClick={() => setShowVideoModal(true)}
+                className="flex items-center gap-2 text-gray-400 hover:text-yellow-400 transition-colors text-sm"
+              >
+                <Play size={18} />
+                Video
+              </button>
+            ) : (
+              <button
+                disabled
+                className="flex items-center gap-2 text-gray-600 cursor-not-allowed text-sm"
+              >
+                <Play size={18} />
+                Video
+              </button>
+            )}
           </div>
 
-          {project.status && (
+          {/* {project.status && (
             <div className="absolute bottom-4 right-4 z-20">
               <span
                 className={`text-xs px-2 py-1 rounded ${
@@ -178,7 +177,7 @@ const ProjectCard = ({ project }) => {
                 {project.status}
               </span>
             </div>
-          )}
+          )} */}
         </div>
       </div>
 

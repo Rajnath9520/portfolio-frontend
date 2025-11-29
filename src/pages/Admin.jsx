@@ -409,7 +409,10 @@ const ProjectManager = ({ projects, openModal, deleteProject, loading }) => {
                     </a>
                   )}
                   {project.videoUrl && (
-                    <span className="text-purple-400 text-sm flex items-center gap-1"><Video size={14} /> Demo Video</span>
+                    <span className="text-purple-400 text-sm flex items-center gap-1"><Video size={14} /> Video</span>
+                  )}
+                  {project.demoUrl && (
+                    <span className="text-purple-400 text-sm flex items-center gap-1"><ExternalLink size={14} /> Demo</span>
                   )}
                 </div>
               </div>
@@ -504,6 +507,7 @@ const Modal = ({
       techStack: item.techStack ? [...item.techStack] : item.tech_stack ? [...item.tech_stack] : [],
       github: item.github || "",
       videoUrl: item.videoUrl || item.video_url || "",
+      demoUrl: item.demoUrl || item.demo_url || "",
       _id: item._id,
     };
   }
@@ -566,7 +570,7 @@ const Modal = ({
   const convertToFormData = (data) => {
     const fd = new FormData();
 
-    const simpleFields = ["title", "description", "issuer", "date", "credentialId", "credentialUrl", "award", "order", "status", "featured", "github", "videoUrl", "longDescription", "_id"];
+    const simpleFields = ["title", "description", "issuer", "date", "credentialId", "credentialUrl", "award", "order", "status", "featured", "github", "videoUrl", "demoUrl", "longDescription", "_id"];
     simpleFields.forEach((key) => {
       if (data[key] !== undefined && data[key] !== null && data[key] !== "") {
         // keep boolean and numbers as is
@@ -823,6 +827,16 @@ const Modal = ({
                       placeholder="https://github.com/..."
                       value={formData.github}
                       onChange={(e) => setFormData({ ...formData, github: e.target.value })}
+                    />
+                  </div>
+
+                  <div>
+                    <label className="text-white text-sm font-semibold mb-2 block">Demo URL</label>
+                    <input
+                      className="bg-gray-800 border border-white/10 p-3 rounded-lg w-full text-white focus:border-yellow-400 focus:outline-none transition"
+                      placeholder="https://..."
+                      value={formData.demoUrl}
+                      onChange={(e) => setFormData({ ...formData, demoUrl: e.target.value })}
                     />
                   </div>
 
