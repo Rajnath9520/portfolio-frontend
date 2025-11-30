@@ -207,21 +207,21 @@ const Achievements = () => {
             </div>
             <div className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700">
               <div className="text-4xl font-bold text-yellow-400 mb-2">
-                {achievements.filter((a) => a.category === 'Certifications').length}
+                {achievements.filter((a) => a.category === 'Courses & Certifications').length}
               </div>
               <div className="text-gray-400">Certifications</div>
             </div>
             <div className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700">
               <div className="text-4xl font-bold text-yellow-400 mb-2">
-                {achievements.filter((a) => a.category === 'Competitions').length}
+                {achievements.filter((a) => a.category === 'Hackathons').length}
               </div>
-              <div className="text-gray-400">Competition Wins</div>
+              <div className="text-gray-400">Competitions</div>
             </div>
             <div className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700">
               <div className="text-4xl font-bold text-yellow-400 mb-2">
-                {featuredAchievements.length}
+                {achievements.filter((a) => a.category === 'Extracurricular Activities').length}
               </div>
-              <div className="text-gray-400">Featured</div>
+              <div className="text-gray-400">Extracurricular Activities</div>
             </div>
           </div>
         )}

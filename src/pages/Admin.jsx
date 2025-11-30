@@ -778,9 +778,7 @@ const Modal = ({
                       placeholder="React, Node.js, Python (comma separated)"
                       value={(formData.skills || []).join(", ")}
                       onChange={(e) =>
-                        setFormData({
-                          ...formData,
-                          skills: e.target.value.split(",").map((s) => s.trim()).filter(Boolean),
+                            setFormData({ ...formData, skills: e.target.value.split(",").map((s) => s.trim()).filter(Boolean)
                         })
                       }
                     />
