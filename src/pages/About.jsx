@@ -2,6 +2,7 @@ import React from 'react';
 import { Code, Brain, Database, Cpu, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ABOUT_STATS, EXPERTISE_AREAS } from '../utils/constants';
+import Reveal from '../components/Reveal'
 
 
 const About = () => {
@@ -20,9 +21,10 @@ const About = () => {
   };
 
   return (
-    <div className="pt-32 px-6 pb-20">
+    <div className="pt-8 px-6 pb-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
+        <Reveal direction="up">
         <div className="text-center mb-16 animate-fade-in">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             About <span className="text-yellow-400">Me</span>
@@ -31,11 +33,13 @@ const About = () => {
             A Full-Stack developer passionate about building intelligent, cloud-ready, and user-focused solutions.
           </p>
         </div>
+        </Reveal>
 
         {/* Main Content */}
         <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
           {/* Left: Bio */}
           <div className="space-y-6 animate-fade-in-left">
+            <Reveal direction="left" delay={0.1}>
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700">
               <h2 className="text-3xl font-bold mb-6 text-yellow-400">My Journey</h2>
               <div className="space-y-4 text-gray-300 leading-relaxed">
@@ -61,10 +65,13 @@ const About = () => {
                 </p>
               </div>
             </div>
+            </Reveal>
           </div>
 
           {/* Right: Stats and Expertise */}
+          <Reveal direction="right" delay={0.2}>
           <div className="space-y-6 animate-fade-in-right">
+            
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4">
               {ABOUT_STATS.map((stat, index) => (
@@ -98,11 +105,14 @@ const About = () => {
                 );
               })}
             </div>
+            
           </div>
+          </Reveal>
         </div>
 
         {/* Education & Experience */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
+          <Reveal direction="up">
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700 animate-fade-in">
             <h3 className="text-2xl font-bold mb-6 text-yellow-400">Education</h3>
             <div className="space-y-6">
@@ -137,8 +147,10 @@ const About = () => {
               </div>
             </div>
           </div>
+          </Reveal>
 
           {/* Experience */}
+          <Reveal direction="up" delay={0.2}>
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700 animate-fade-in">
             <h3 className="text-2xl font-bold mb-6 text-yellow-400">Experience</h3>
             <div className="space-y-6">
@@ -165,17 +177,8 @@ const About = () => {
               </div> */}
             </div>
           </div>
-          
+          </Reveal>
         </div>
-        <div className="text-center mt-12">
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-500 transition-all"
-            >
-              Work Showcase
-              <ArrowRight size={20} />
-            </Link>
-          </div>
       </div>
     </div>
   );

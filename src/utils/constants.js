@@ -19,10 +19,10 @@ export const PERSONAL_INFO = {
 // Navigation Items
 export const NAV_ITEMS = [
   { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
+  // { name: 'About', path: '/about' },
   { name: 'Portfolio', path: '/projects' },
   { name: 'Achievements', path: '/achievements'},
-  { name: 'Skills', path: '/skills' },
+  // { name: 'Skills', path: '/skills' },
   { name: 'Admin', path: '/login' },
   // { name: 'Dashboard',path:'/dashboard'}
 ];

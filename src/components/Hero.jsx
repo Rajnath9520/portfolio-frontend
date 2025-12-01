@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import { Mail, Download, Github, Linkedin } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PERSONAL_INFO, SOCIAL_LINKS } from '../utils/constants';
-import img1 from '../assets/rajnath2.webp';
+import img1 from '../assets/rajnath.webp';
 import img2 from '../assets/play.jpg';
-import img3 from '../assets/rajnath.jpg';
-
+import Reveal from './Reveal';
 
 
 
@@ -18,10 +17,6 @@ const SLIDES = [
   { 
     image: img2, 
     title: "I Play",  
-  },
-  { 
-    image: img3, 
-    title: "I Evolve",  
   },
 ];
 
@@ -67,12 +62,15 @@ const Hero = () => {
         {/* Left Content */}
         <div className="space-y-6 animate-fade-in-left">
           <div className="text-gray-400 text-lg">Hello,</div>
+          
           <h1 className="text-6xl md:text-7xl font-bold leading-tight">
             I'm <span className="text-yellow-400">{PERSONAL_INFO.name}</span>
           </h1>
+          <Reveal direction="right" delay={0.2}>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-300">
             {PERSONAL_INFO.title}
           </h2>
+          </Reveal>
           <p className="text-gray-400 text-lg max-w-xl">
             {PERSONAL_INFO.tagline}
           </p>
@@ -132,7 +130,7 @@ const Hero = () => {
     onMouseEnter={() => setIsHovering(true)}
     onMouseLeave={() => setIsHovering(false)}
   >
-    <AnimatePresence custom={direction} mode="wait">
+    <AnimatePresence custom={direction}>
       <motion.img
         key={index}
         src={SLIDES[index].image}

@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import Reveal from "../components/Reveal";
+import SkillCard from "../components/SkillScroll";
 import {
   SiJavascript,
   SiTypescript,
@@ -53,7 +55,7 @@ export default function Skills() {
   };
 
   return (
-    <div className="min-h-screen w-full text-white flex flex-col items-center py-20 px-6">
+    <div className="min-h-screen w-full text-white flex flex-col items-center py-20 px-6 pt-8">
 
       {/* Header */}
       <motion.div
@@ -62,29 +64,16 @@ export default function Skills() {
         transition={{ duration: 0.2 }}
         className="flex items-center gap-3 mb-12"
       >
+        <Reveal direction="up">
         <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-yellow-400 to-yellow-600 text-transparent bg-clip-text">
           Tech Stack
         </h1>
+        </Reveal>
       </motion.div>
 
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 max-w-6xl">
         {items.map((item, i) => (
-          <motion.div
-            key={i}
-            custom={i}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
-            whileHover={{
-              scale: 1.08,
-              boxShadow: "0 0 20px rgba(0, 255, 255, 0.25)",
-              borderColor: "rgba(0, 255, 255, 0.4)",
-            }}
-            className="bg-[#0c0c0f] border border-white/10 rounded-2xl p-6 flex flex-col items-center gap-4 transition-all duration-100"
-          >
-            <div>{item.icon}</div>
-            <p className="text-sm text-gray-300">{item.label}</p>
-          </motion.div>
+          <SkillCard key={i} item={item} i={i} />
         ))}
       </div>
     </div>

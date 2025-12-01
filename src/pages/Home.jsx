@@ -1,9 +1,11 @@
-
 import React from 'react';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Brain, Database, Cpu } from 'lucide-react';
-import { EXPERTISE_AREAS } from '../utils/constants';
+import { ABOUT_STATS, EXPERTISE_AREAS } from '../utils/constants';
+import About from './About'
+import Skills from './Skills';
+import Reveal from '../components/Reveal';
 
 const Home = () => {
   const iconMap = {
@@ -23,8 +25,13 @@ const Home = () => {
   return (
     <div>
     <Hero />
+    <About/> 
+    <Skills/>    
+      
+
       <section className="py-20 px-6 bg-gray-900/50">
         <div className="max-w-7xl mx-auto">
+          <Reveal direction="up">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               What I <span className="text-yellow-400">Do</span>
@@ -33,6 +40,7 @@ const Home = () => {
               Where Full-Stack engineering meets AI innovation and Cloud scalability.
             </p>
           </div>
+          </Reveal>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 ">
             {EXPERTISE_AREAS.map((area, index) => {
@@ -52,29 +60,24 @@ const Home = () => {
             })}
           </div>
 
-          <div className="text-center mt-12">
-            <Link
-              to="/about"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-500 transition-all"
-            >
-              More About Me
-              <ArrowRight size={20} />
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* CTA Section */}
+      
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/20 rounded-3xl p-12 text-center">
+            <Reveal direction='up'>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
               Let's Work <span className="text-yellow-400">Together</span>
             </h2>
+            
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
               I'm always interested in hearing about new projects and opportunities.
               Let's create something amazing together!
             </p>
+            </Reveal>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 to="/contact"
