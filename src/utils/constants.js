@@ -60,8 +60,7 @@ export const SOCIAL_LINKS = [
 export const ABOUT_STATS = [
   { value: '10+', label: 'Projects Completed' },
   { value: '5+', label: 'Technologies' },
-  { value: '2+', label: 'Years Experience' },
-  { value: '100%', label: 'Client Satisfaction' },
+  { value: '0+', label: 'Years Experience' },
 ];
 
 // Expertise Areas
