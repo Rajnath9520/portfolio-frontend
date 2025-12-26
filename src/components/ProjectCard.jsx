@@ -43,7 +43,7 @@ const ProjectCard = ({ project }) => {
     <>
       {/* CARD */}
       <div
-        className="relative group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-2"
+        className="relative w-full group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-2"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => {
           setHovered(false);
@@ -52,7 +52,7 @@ const ProjectCard = ({ project }) => {
       >
 
         {/* IMAGE SLIDER */}
-        <div className="h-48 relative rounded-xl overflow-hidden bg-gradient-to-br from-yellow-400/20 to-transparent mb-6">
+        <div className="h-48 w-full relative rounded-xl overflow-hidden bg-gradient-to-br from-yellow-400/20 to-transparent mb-6">
           {images.length > 0 ? (
             images.map((img, index) => (
               <img
@@ -87,30 +87,30 @@ const ProjectCard = ({ project }) => {
 
         {/* INFO */}
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h3 className="text-xl font-bold">{project.title}</h3>
+          <div className="flex items-center justify-between gap-3">
+            <h3 className="text-xl font-bold break-words flex-1 min-w-0">{project.title}</h3>
 
             {project.category && (
-              <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs border border-yellow-400/20 whitespace-nowrap">
+              <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs border border-yellow-400/20 whitespace-nowrap shrink-0">
                 {project.category}
               </span>
             )}
           </div>
 
-          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3 break-words">
             {project.description}
           </p>
 
           <div className="flex flex-wrap gap-2">
             {project.techStack?.map((tech, index) => (
-              <span key={index} className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs">
+              <span key={index} className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs break-words">
                 {tech}
               </span>
             ))}
           </div>
 
           {/* BUTTONS: CODE | DEMO | WATCH VIDEO */}
-          <div className="flex gap-4 pt-4 border-t border-gray-700">
+          <div className="flex gap-4 pt-4 border-t border-gray-700 flex-wrap">
             {project.github && project.github !== '#' && (
               <a
                 href={project.github}
@@ -162,29 +162,13 @@ const ProjectCard = ({ project }) => {
               </button>
             )}
           </div>
-
-          {/* {project.status && (
-            <div className="absolute bottom-4 right-4 z-20">
-              <span
-                className={`text-xs px-2 py-1 rounded ${
-                  project.status === 'completed'
-                    ? 'bg-green-500/10 text-green-400'
-                    : project.status === 'in-progress'
-                    ? 'bg-blue-500/10 text-blue-400'
-                    : 'bg-gray-700 text-gray-400'
-                }`}
-              >
-                {project.status}
-              </span>
-            </div>
-          )} */}
         </div>
       </div>
 
       {/* VIDEO MODAL */}
       {showVideoModal && (
         <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-lg z-[999] flex items-center justify-center p-6"
+          className="fixed inset-0 bg-black/80 backdrop-blur-lg z-[999] flex items-center justify-center p-4 sm:p-6"
           onClick={() => setShowVideoModal(false)}
         >
           <div
@@ -193,14 +177,15 @@ const ProjectCard = ({ project }) => {
           >
             <iframe
               src={embedUrl}
-              className="w-full h-[70vh]"
+              className="w-full h-[50vh] sm:h-[70vh]"
               allow="autoplay; encrypted-media"
               allowFullScreen
+              title="Project video"
             ></iframe>
 
             <button
               onClick={() => setShowVideoModal(false)}
-              className="w-full py-3 bg-yellow-500 text-black font-semibold"
+              className="w-full py-3 bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition"
             >
               Close Video
             </button>
