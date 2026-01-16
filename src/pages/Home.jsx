@@ -37,7 +37,7 @@ const Home = () => {
               What I <span className="text-yellow-400">Do</span>
             </h2>
             <p className="text-gray-400 text-lg">
-              Where Full-Stack engineering meets AI innovation and Cloud scalability.
+              Where Full-Stack engineering meets innovation and Scalability.
             </p>
           </div>
           </Reveal>

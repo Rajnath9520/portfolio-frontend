@@ -4,10 +4,10 @@ export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:50
 // Personal Information
 export const PERSONAL_INFO = {
   name: 'Rajnath',
-  title: 'AI & Full Stack Developer',
+  title: 'Full Stack Developer',
   tagline: `I specialize in building Full-Stack web applications that are fast, reliable and user-friendly. 
             I am  constantly exploring new technologies to refine my skills. Focused on continuous learning, 
-            I aim to transition into the IT industry by 2027 and eventually move towards Artificial Intelligence.`,
+            I aim to transition into the IT industry by 2027.`,
   email: 'rajnaths9520@gmail.com',
   github: 'https://github.com/Rajnath9520',
   linkedin: 'https://linkedin.com/in/rajnathsingh9520',
@@ -58,19 +58,13 @@ export const SOCIAL_LINKS = [
 
 // About Stats
 export const ABOUT_STATS = [
-  { value: '10+', label: 'Projects Completed' },
+  { value: '5+', label: 'Projects Completed' },
   { value: '5+', label: 'Technologies' },
   { value: '0+', label: 'Years Experience' },
 ];
 
 // Expertise Areas
 export const EXPERTISE_AREAS = [
-  {
-    title: 'AI & ML',
-    description: 'Deep learning, NLP, RAG',
-    icon: 'Brain',
-    color: 'blue',
-  },
   {
     title: 'Full Stack',
     description: 'React, Node.js, MongoDB, Express, REST APIs',
