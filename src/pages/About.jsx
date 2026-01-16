@@ -21,7 +21,7 @@ const About = () => {
   };
 
   return (
-    <div className="pt-8 px-6 pb-20">
+    <div className="pt-8 px-6 pb-20 overflow-x-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <Reveal direction="up">

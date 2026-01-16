@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Award, Calendar, Play } from "lucide-react";
 
 const AchievementCard = ({ achievement }) => {
@@ -20,17 +20,55 @@ const AchievementCard = ({ achievement }) => {
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const cardRef = useRef(null);
 
-  // Hover slider
+  // Detect if mobile
   useEffect(() => {
-    if (!hovered || images.length <= 1) return;
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Intersection Observer for mobile auto-slide
+  useEffect(() => {
+    if (!isMobile || !cardRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.5 } // Card needs to be 50% visible
+    );
+
+    observer.observe(cardRef.current);
+
+    return () => {
+      if (cardRef.current) {
+        observer.unobserve(cardRef.current);
+      }
+    };
+  }, [isMobile]);
+
+  // Slider logic: hover for desktop, visibility for mobile
+  useEffect(() => {
+    if (images.length <= 1) return;
+
+    const shouldSlide = isMobile ? isVisible : hovered;
+    
+    if (!shouldSlide) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
     }, 1500);
 
     return () => clearInterval(interval);
-  }, [hovered, images]);
+  }, [hovered, isVisible, isMobile, images.length]);
 
   const getEmbedUrl = (url) => {
     if (!url) return null;
@@ -62,6 +100,7 @@ const AchievementCard = ({ achievement }) => {
   return (
     <>
       <div
+        ref={cardRef}
         className={`relative w-full max-w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 p-6 backdrop-blur-xl shadow-lg transition-all duration-300 hover:-translate-y-2 ${ui.glow} overflow-hidden`}
       >
         {featured && (
@@ -78,10 +117,12 @@ const AchievementCard = ({ achievement }) => {
         {/* IMAGE SECTION */}
         <div
           className="h-52 w-full relative rounded-xl overflow-hidden cursor-pointer bg-white/10 backdrop-blur-lg mt-5"
-          onMouseEnter={() => setHovered(true)}
+          onMouseEnter={() => !isMobile && setHovered(true)}
           onMouseLeave={() => {
-            setHovered(false);
-            setCurrentIndex(0);
+            if (!isMobile) {
+              setHovered(false);
+              setCurrentIndex(0);
+            }
           }}
           onClick={() => setShowImageModal(true)}
         >
