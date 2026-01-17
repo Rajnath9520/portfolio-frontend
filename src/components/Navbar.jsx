@@ -23,7 +23,7 @@ const Navbar = () => {
     return location.pathname.startsWith(path);
   };
 
-  const portfolioTab = NAV_ITEMS.find((i) => i.name === "Portfolio");
+  const portfolioTab = NAV_ITEMS.find((i) => i.name === "Projects");
   const otherItems = NAV_ITEMS.filter((i) => i.name !== "Admin");
 
   return (

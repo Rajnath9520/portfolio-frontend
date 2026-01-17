@@ -44,7 +44,7 @@ const Projects = () => {
             My <span className="text-yellow-400">Projects</span>
           </h1>
           <p className="text-gray-400 text-lg max-w-3xl mx-auto">
-            A collection of my work in AI/ML, full-stack development, and more.
+            A collection of my work in full-stack development and more.
             Each project represents a unique challenge and learning experience.
           </p>
         </div>
@@ -112,12 +112,6 @@ const Projects = () => {
               {projects.length}
             </div>
             <div className="text-gray-400">Total Projects</div>
-          </div>
-          <div className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700">
-            <div className="text-4xl font-bold text-yellow-400 mb-2">
-              {projects.filter((p) => p.category === 'AI/ML').length}
-            </div>
-            <div className="text-gray-400">AI/ML Projects</div>
           </div>
           <div className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700">
             <div className="text-4xl font-bold text-yellow-400 mb-2">

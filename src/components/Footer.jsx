@@ -17,7 +17,8 @@ const Footer = () => {
               <span className="text-white">.</span>
             </div>
             <p className="text-gray-400 text-sm">
-              Building fast, reliable, and user-friendly web experiences.
+              Building fast, reliable and 
+              <p>user-friendly web experiences.</p>
             </p>
             <div className="flex gap-4">
               {SOCIAL_LINKS.map((link) => {
@@ -60,7 +61,6 @@ const Footer = () => {
           <div>
             <h3 className="text-white font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>AI/ML Development</li>
               <li>Full Stack Development</li>
               <li>Backend APIs</li>
               <li>Frontend Development</li>

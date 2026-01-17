@@ -6,8 +6,7 @@ export const PERSONAL_INFO = {
   name: 'Rajnath',
   title: 'Full Stack Developer',
   tagline: `I specialize in building Full-Stack web applications that are fast, reliable and user-friendly. 
-            I am  constantly exploring new technologies to refine my skills. Focused on continuous learning, 
-            I aim to transition into the IT industry by 2027.`,
+            Exploring new technologies, refining my skills, and committed to continuous learning—on a journey to enter the IT industry by 2027.`,
   email: 'rajnaths9520@gmail.com',
   github: 'https://github.com/Rajnath9520',
   linkedin: 'https://linkedin.com/in/rajnathsingh9520',
@@ -20,7 +19,7 @@ export const PERSONAL_INFO = {
 export const NAV_ITEMS = [
   { name: 'Home', path: '/' },
   // { name: 'About', path: '/about' },
-  { name: 'Portfolio', path: '/projects' },
+  { name: 'Projects', path: '/projects' },
   { name: 'Achievements', path: '/achievements'},
   // { name: 'Skills', path: '/skills' },
   { name: 'Admin', path: '/login' },
@@ -58,8 +57,8 @@ export const SOCIAL_LINKS = [
 
 // About Stats
 export const ABOUT_STATS = [
-  { value: '5+', label: 'Projects Completed' },
-  { value: '5+', label: 'Technologies' },
+  { value: '4+', label: 'Projects Completed' },
+  { value: '7+', label: 'Technologies' },
   { value: '0+', label: 'Years Experience' },
 ];
 
@@ -103,7 +102,6 @@ export const ANIMATION_VARIANTS = {
 // Project Categories
 export const PROJECT_CATEGORIES = [
   'All',
-  'AI/ML',
   'Full Stack',
   'Backend',
   'Frontend',

@@ -41,27 +41,25 @@ const About = () => {
           <div className="space-y-6 animate-fade-in-left">
             <Reveal direction="left" delay={0.1}>
             <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700">
-              <h2 className="text-3xl font-bold mb-6 text-yellow-400">My Journey</h2>
+              <h2 className="text-3xl font-bold mb-6 text-yellow-400">Who I am</h2>
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  I'm an AI and Full-Stack developer passionate about building intelligent, scalable, and user-centered 
-                  digital experiences. My journey in tech began with curiosity—exploring how systems work and how AI can 
-                  create real impact. Over time, that curiosity has grown into a commitment to mastering both modern web 
-                  development and artificial intelligence
+                  I'm a Full-Stack developer passionate about building intelligent, scalable, and user-centered 
+                  digital experiences. My journey in tech began with curiosity—exploring how systems work. Over time, that curiosity has grown into a commitment to mastering  modern web 
+                  development.
                 </p>
                 <p>
-                  I’ve built a range of projects, from AI-driven semantic search with LLaMA, RAG-based systems, and smart
-                   solutions like Ez-Smart Agriculture, to full-stack platforms such as Civic-Sight and complete admin 
+                  I’ve built a range of projects, from smart
+                   solutions like Ez-Smart Agriculture (with Team collaboration), to full-stack platforms such as Staymania-A hotel booking website, Milkr-A milk delivery management  with different user role,  full crud operations and complete admin 
                    dashboards with authentication, content management, and cloud deployment. Each project has helped me
                     refine my problem-solving approach and create cleaner, more scalable applications.
                 </p>
                 <p>
-                  My expertise includes Python, JavaScript, React, Node.js, Express, MongoDB, FastAPI, and ML frameworks like TensorFlow, PyTorch, and LLaMA. 
-                  I love crafting clean architectures—whether it's an AI pipeline, a backend service, or a polished frontend.
+                  My expertise includes JavaScript ,Tailwind Css, React, Node.js, Express, MongoDB, Python, MySQL
+                  I love crafting clean architectures—whether it's a backend service, or a polished frontend.
                 </p>
                 <p>
-                  Outside of development, I stay focused on exploring new technologies, sharpening my AI knowledge, and playing badminton to stay balanced. 
-                  My journey is rooted in continuous learning and building solutions that truly make an impact.
+                  Outside of development, I stay focused on exploring new technologies, improving my AI knowledge, and playing badminton to stay balanced.
                 </p>
               </div>
             </div>
@@ -114,7 +112,7 @@ const About = () => {
         <div className="grid md:grid-cols-2 gap-8 mb-20">
           <Reveal direction="up">
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700 animate-fade-in">
-            <h3 className="text-2xl font-bold mb-6 text-yellow-400">Education</h3>
+            <h3 className="text-2xl font-bold mb-6 text-yellow-400">Learning Journey</h3>
             <div className="space-y-6">
               <div className="border-l-2 border-yellow-400 pl-6">
                 <div className="text-sm text-gray-400 mb-1">2023 - 2027</div>
@@ -123,13 +121,13 @@ const About = () => {
                 </h4>
                 <p className="text-gray-400">Institute of Technology,Guru Ghasidas Vishwavidyalaya- Central University Chhattisgarh</p>
               </div>
-              <div className="border-l-2 border-gray-600 pl-6">
+              {/* <div className="border-l-2 border-gray-600 pl-6">
                 <div className="text-sm text-gray-400 mb-1">Online</div>
                 <h4 className="text-xl font-semibold mb-2">
                   Complete Data Science,Machine Learning,DL,NLP
                 </h4>
                 <p className="text-gray-400">Udemy.com</p>
-              </div>
+              </div> */}
               <div className="border-l-2 border-gray-600 pl-6">
                 <div className="text-sm text-gray-400 mb-1">Online</div>
                 <h4 className="text-xl font-semibold mb-2">
