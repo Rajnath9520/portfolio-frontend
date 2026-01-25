@@ -41,7 +41,7 @@ const Achievements = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h1 className="text-5xl md:text-6xl sm:text-2xl font-bold mb-6 break-words leading-tight">
             Achievements & <span className="text-yellow-400">Badges</span>
           </h1>
@@ -63,7 +63,7 @@ const Achievements = () => {
               {featuredAchievements.slice(0, 3).map((achievement) => (
                 <div
                   key={achievement._id}
-                  className="p-6 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 rounded-xl border-2 border-yellow-400/30 hover:border-yellow-400/50 transition-all"
+                  className="p-6 bg-gradient-to-br from-yellow-400/10 to-orange-500/10 rounded-xl border-2 border-yellow-400/30 hover:border-yellow-400/50 "
                 >
                   <div className="flex items-start gap-4">
                     <img
@@ -90,12 +90,12 @@ const Achievements = () => {
 
         {/* Category Filter */}
         {!showTimeline && (
-          <div className="flex flex-wrap justify-center gap-4 mb-12 animate-fade-in">
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
             {ACHIEVEMENT_CATEGORIES.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
+                className={`px-6 py-2 rounded-full font-medium  ${
                   activeCategory === category
                     ? 'bg-yellow-400 text-black'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
@@ -120,7 +120,7 @@ const Achievements = () => {
             <p className="text-red-400 mb-4">{error}</p>
             <button
               onClick={fetchAchievements}
-              className="px-6 py-2 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 transition-all"
+              className="px-6 py-2 bg-yellow-400 text-black rounded-lg font-semibold hover:bg-yellow-500 "
             >
               Retry
             </button>
@@ -131,7 +131,7 @@ const Achievements = () => {
         {!loading && !error && !showTimeline && (
           <>
             {filteredAchievements.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+              <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-8 ">
                 {filteredAchievements.map((achievement) => (
                   <AchievementCard key={achievement._id} achievement={achievement} />
                 ))}
@@ -164,7 +164,7 @@ const Achievements = () => {
                     {/* Dot */}
                     <span className="absolute -left-9 mt-2 w-4 h-4 bg-yellow-400 rounded-full border-2 border-gray-900 shadow-md"></span>
 
-                    <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-gray-700 shadow-lg hover:shadow-xl transition-all w-full">
+                    <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 rounded-xl border border-gray-700 shadow-lg hover:shadow-xl  w-full">
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-bold text-white">
                           {achievement.title}
@@ -186,7 +186,7 @@ const Achievements = () => {
                         <img
                           src={achievement.images[0]}
                           alt={achievement.title}
-                          className="w-40 h-28 object-cover rounded-lg border border-gray-700"
+                          className="w-40 h-28  rounded-lg border border-gray-700"
                         />
                       )}
                     </div>
@@ -230,7 +230,7 @@ const Achievements = () => {
         <div className="mt-16 text-center">
           <button
             onClick={() => setShowTimeline(!showTimeline)}
-            className="px-6 py-3 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-700 transition-all"
+            className="px-6 py-3 bg-gray-800 text-white rounded-lg font-semibold hover:bg-gray-700 "
           >
             {showTimeline ? "Back to Grid View" : "View Timeline"}
           </button>

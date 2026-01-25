@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Brain, Database, Cpu } from 'lucide-react';
+import { ArrowRight, Code, Brain, Database, Cpu,UserCheck } from 'lucide-react';
 import { ABOUT_STATS, EXPERTISE_AREAS } from '../utils/constants';
 import About from './About'
 import Skills from './Skills';
@@ -13,6 +13,7 @@ const Home = () => {
     Code: Code,
     Database: Database,
     Cpu: Cpu,
+    UserCheck: UserCheck,
   };
 
   const colorClasses = {
@@ -37,7 +38,7 @@ const Home = () => {
               What I <span className="text-yellow-400">Do</span>
             </h2>
             <p className="text-gray-400 text-lg">
-              Where Full-Stack engineering meets innovation and Scalability.
+              Where full-stack engineering meets scalability and real-world problem solving.
             </p>
           </div>
           </Reveal>
@@ -48,7 +49,7 @@ const Home = () => {
               return (
                 <div
                   key={index}
-                  className={`p-6 bg-gradient-to-br ${colorClasses[area.color]} rounded-xl border transition-all duration-300 hover:transform hover:-translate-y-2`}
+                  className={`p-6 bg-transparent transition-all duration-300 hover:transform hover:-translate-y-2`}
                 >
                   <Icon className={colorClasses[area.color].split(' ')[2]} size={40} />
                   <h3 className="font-semibold text-lg mt-4 mb-2 text-white">
@@ -67,15 +68,15 @@ const Home = () => {
       
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-yellow-400/10 to-yellow-600/10 border border-yellow-400/20 rounded-3xl p-12 text-center">
+          <div className="bg-transparent rounded-3xl p-12 text-center">
             <Reveal direction='up'>
             <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Let's Work <span className="text-yellow-400">Together</span>
+              Let’s Build Something <span className="text-yellow-400">Meaningful</span>
             </h2>
             
             <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">
-              I'm always interested in hearing about new projects and opportunities.
-              Let's create something amazing together!
+              I’m open to internships, entry-level roles, and collaborative projects. 
+              If you’re looking for a motivated developer who learns fast and builds with intent, let’s connect.
             </p>
             </Reveal>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -90,7 +90,7 @@ const Projects = () => {
         {!loading && !error && (
           <>
             {filteredProjects.length > 0 ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
+              <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-8 animate-fade-in">
                 {filteredProjects.map((project) => (
                   <ProjectCard key={project._id} project={project} />
                 ))}
@@ -106,7 +106,7 @@ const Projects = () => {
         )}
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mt-20">
           <div className="text-center p-6 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl border border-gray-700">
             <div className="text-4xl font-bold text-yellow-400 mb-2">
               {projects.length}

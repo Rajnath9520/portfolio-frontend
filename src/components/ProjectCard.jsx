@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Github, ExternalLink, Code, Play } from 'lucide-react';
+import ImageModal from "./ImageModal";
+import VideoModal from './VideoModal';
+
 
 const ProjectCard = ({ project }) => {
   const images = project.images || [];
@@ -7,6 +10,8 @@ const ProjectCard = ({ project }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showVideoModal, setShowVideoModal] = useState(false);
   const [hovered, setHovered] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
+
 
   // Auto-slide only on hover
   useEffect(() => {
@@ -43,16 +48,17 @@ const ProjectCard = ({ project }) => {
     <>
       {/* CARD */}
       <div
-        className="relative w-full group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-2"
+        className="relative w-full group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 hover:border-yellow-400/50 transition-all duration-300 hover:-translate-y-1"
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => {
           setHovered(false);
           setCurrentIndex(0);
         }}
       >
-
         {/* IMAGE SLIDER */}
-        <div className="h-48 w-full relative rounded-xl overflow-hidden bg-gradient-to-br from-yellow-400/20 to-transparent mb-6">
+        <div className="relative w-full h-48 sm:h-48 md:h-56 lg:hidden rounded-xl overflow-hidden bg-gradient-to-br from-yellow-400/20 to-transparent mb-6"
+              onClick={() => setShowImageModal(true)}>
+
           {images.length > 0 ? (
             images.map((img, index) => (
               <img
@@ -60,7 +66,7 @@ const ProjectCard = ({ project }) => {
                 src={img}
                 alt={project.title}
                 className={`absolute inset-0 w-full h-full object-cover rounded-xl transition-opacity duration-700 ${
-                  index === currentIndex ? 'opacity-100' : 'opacity-0'
+                  index === currentIndex ? "opacity-100" : "opacity-0"
                 }`}
               />
             ))
@@ -77,7 +83,7 @@ const ProjectCard = ({ project }) => {
                 <span
                   key={idx}
                   className={`w-2 h-2 rounded-full transition-all ${
-                    idx === currentIndex ? 'bg-yellow-400' : 'bg-gray-500'
+                    idx === currentIndex ? "bg-yellow-400" : "bg-gray-500"
                   }`}
                 ></span>
               ))}
@@ -88,10 +94,12 @@ const ProjectCard = ({ project }) => {
         {/* INFO */}
         <div className="space-y-4">
           <div className="flex items-center justify-between gap-3">
-            <h3 className="text-xl font-bold break-words flex-1 min-w-0">{project.title}</h3>
+            <h3 className="text-xl font-bold break-words flex-1 min-w-0">
+              {project.title}
+            </h3>
 
             {project.category && (
-              <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs border border-yellow-400/20 whitespace-nowrap shrink-0">
+              <span className="px-3 py-1 bg-yellow-400/10 text-yellow-400 rounded-full text-xs border border-yellow-400/20 whitespace-nowrap ">
                 {project.category}
               </span>
             )}
@@ -103,15 +111,18 @@ const ProjectCard = ({ project }) => {
 
           <div className="flex flex-wrap gap-2">
             {project.techStack?.map((tech, index) => (
-              <span key={index} className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs break-words">
+              <span
+                key={index}
+                className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs break-words"
+              >
                 {tech}
               </span>
             ))}
           </div>
 
-          {/* BUTTONS: CODE | DEMO | WATCH VIDEO */}
+          {/* BUTTONS: CODE | DEMO | WATCH VIDEO | VIDEO */}
           <div className="flex gap-4 pt-4 border-t border-gray-700 flex-wrap">
-            {project.github && project.github !== '#' && (
+            {project.github && project.github !== "#" && (
               <a
                 href={project.github}
                 target="_blank"
@@ -123,7 +134,9 @@ const ProjectCard = ({ project }) => {
               </a>
             )}
 
-            {project.demoUrl && project.demoUrl !== '' && project.demoUrl !== '#' ? (
+            {project.demoUrl &&
+            project.demoUrl !== "" &&
+            project.demoUrl !== "#" ? (
               <a
                 href={project.demoUrl}
                 target="_blank"
@@ -161,36 +174,36 @@ const ProjectCard = ({ project }) => {
                 Video
               </button>
             )}
+            <div className="flex gap-3 flex-wrap">
+              {images.length > 0 && (
+                <button
+                  onClick={() => setShowImageModal(true)}
+                  className="ml-auto px-4 py-1.5 text-xs text-white bg-yellow-400/10 border border-yellow-400/20 hover:bg-yellow-400/20 rounded-lg  transition"
+                >
+                  View
+                </button>
+              )}
+            </div>
+            
           </div>
+          
         </div>
       </div>
+      {showImageModal && (
+        <ImageModal
+          images={images}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          onClose={() => setShowImageModal(false)}
+        />
+      )}
 
       {/* VIDEO MODAL */}
       {showVideoModal && (
-        <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-lg z-[999] flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setShowVideoModal(false)}
-        >
-          <div
-            className="bg-black rounded-xl max-w-4xl w-full overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <iframe
-              src={embedUrl}
-              className="w-full h-[50vh] sm:h-[70vh]"
-              allow="autoplay; encrypted-media"
-              allowFullScreen
-              title="Project video"
-            ></iframe>
-
-            <button
-              onClick={() => setShowVideoModal(false)}
-              className="w-full py-3 bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition"
-            >
-              Close Video
-            </button>
-          </div>
-        </div>
+        <VideoModal
+          embedUrl={embedUrl}
+          onClose={() => setShowVideoModal(false)}
+        />
       )}
     </>
   );

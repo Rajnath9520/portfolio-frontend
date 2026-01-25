@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Award, Calendar, Play } from "lucide-react";
+import ImageModal from "./ImageModal"; 
+import VideoModal from "./VideoModal"; 
 
 const AchievementCard = ({ achievement }) => {
   const {
@@ -43,7 +45,7 @@ const AchievementCard = ({ achievement }) => {
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
       },
-      { threshold: 0.5 } // Card needs to be 50% visible
+      { threshold: 0.5 } 
     );
 
     observer.observe(cardRef.current);
@@ -54,6 +56,19 @@ const AchievementCard = ({ achievement }) => {
       }
     };
   }, [isMobile]);
+
+  useEffect(() => {
+  if (showImageModal || showVideoModal) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+
+  return () => {
+    document.body.style.overflow = "auto";
+  };
+}, [showImageModal, showVideoModal]);
+
 
   // Slider logic: hover for desktop, visibility for mobile
   useEffect(() => {
@@ -80,7 +95,7 @@ const AchievementCard = ({ achievement }) => {
   const embedUrl = getEmbedUrl(videoUrl);
 
   const CATEGORY_UI = {
-    Hackathons: { badge: "text-blue-300", glow: "shadow-blue-500/20" },
+    Hackathons: { badge: "text-blue-300", glow: "shadow-yellow-500/20" },
     Competitions: { badge: "text-orange-300", glow: "shadow-orange-500/20" },
     "Courses & Certifications": { badge: "text-purple-300", glow: "shadow-purple-500/20" },
     "Academic Achievements": { badge: "text-indigo-300", glow: "shadow-indigo-500/20" },
@@ -99,237 +114,181 @@ const AchievementCard = ({ achievement }) => {
 
   return (
     <>
-      <div
-        ref={cardRef}
-        className={`relative w-full max-w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 p-6 backdrop-blur-xl shadow-lg transition-all duration-300 hover:-translate-y-2 ${ui.glow} overflow-hidden`}
-      >
-        {featured && (
-          <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-400 rounded-t-2xl"></div>
-        )}
-        <div className="w-full flex justify-center">
-          <div
-            className={`px-4 py-1 mt-1 rounded-full text-xs font-semibold bg-white/10 border border-white/20 backdrop-blur-xl ${ui.badge}`}
-          >
-            {category}
-          </div>
-        </div>
-
-        {/* IMAGE SECTION */}
+      {!showImageModal && !showVideoModal && (
         <div
-          className="h-52 w-full relative rounded-xl overflow-hidden cursor-pointer bg-white/10 backdrop-blur-lg mt-5"
-          onMouseEnter={() => !isMobile && setHovered(true)}
-          onMouseLeave={() => {
-            if (!isMobile) {
-              setHovered(false);
-              setCurrentIndex(0);
-            }
-          }}
-          onClick={() => setShowImageModal(true)}
+          ref={cardRef}
+          className={`relative w-full max-w-full bg-gradient-to-br from-white/10 to-white/5 rounded-2xl border border-white/10 hover:border-yellow-400/30
+          p-6  shadow-lg transition-transform transition-colors duration-300 hover:-translate-y-1 ${ui.glow} overflow-hidden`}
         >
-          {images.length ? (
-            images.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={title}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
-                  idx === currentIndex ? "opacity-100" : "opacity-0"
-                }`}
-              />
-            ))
-          ) : (
-            <div className="flex items-center justify-center h-full text-gray-300">
-              No Image
-            </div>
+          {featured && (
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-400 rounded-t-2xl"></div>
           )}
-
-          {/* SLIDER DOTS */}
-          {images.length > 1 && (
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
-              {images.map((_, idx) => (
-                <span
-                  key={idx}
-                  className={`w-2 h-2 rounded-full ${
-                    currentIndex === idx ? "bg-yellow-400" : "bg-gray-600"
-                  }`}
-                ></span>
-              ))}
+          <div className="w-full flex justify-center">
+            <div
+              className={`px-4 py-1 mt-1 rounded-full text-xs font-semibold bg-white/10 border border-white/20  ${ui.badge}`}
+            >
+              {category}
             </div>
-          )}
-        </div>
-
-        {/* title and issuer and award */}
-        <div className="flex justify-between items-start mt-5 gap-3">
-          <div className="text-left flex-1 min-w-0">
-            <h3 className="text-xl font-bold text-white break-words">{title}</h3>
-            <p className="text-sm text-gray-300 mt-1 break-words">{issuer}</p>
           </div>
-          {award && (
-            <div className="flex items-center gap-2 p-2.5 bg-amber-500/10 border border-amber-400/20 rounded-lg backdrop-blur shrink-0">
-              <Award size={16} className="text-amber-400" />
-              <span className="text-sm text-amber-300 font-semibold whitespace-nowrap">
-                {award}
-              </span>
-            </div>
-          )}
-        </div>
 
-        {/* DESCRIPTION */}
-        <p className="text-sm text-gray-300 mt-4 leading-relaxed text-left line-clamp-3 break-words">
-          {description}
-        </p>
-
-        {/* VIDEO PREVIEW */}
-        {videoUrl && (
+          {/* IMAGE SECTION */}
           <div
-            className="relative w-full h-36 rounded-xl overflow-hidden cursor-pointer mt-5 group"
-            onClick={() => setShowVideoModal(true)}
+            className="h-30 w-30 relative rounded-xl overflow-hidden cursor-pointer   mt-5"
+            onMouseEnter={() => !isMobile && setHovered(true)}
+            onMouseLeave={() => {
+              if (!isMobile) {
+                setHovered(false);
+                setCurrentIndex(0);
+              }
+            }}
+            onClick={() => setShowImageModal(true)}
           >
-            <iframe
-              src={embedUrl}
-              className="w-full h-full opacity-60 pointer-events-none group-hover:opacity-100 transition"
-              title="Video preview"
-            ></iframe>
+            {images.length ? (
+              images.map((img, idx) => (
+                <img
+                  key={idx}
+                  src={img}
+                  alt={title}
+                  className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${
+                    idx === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              ))
+            ) : (
+              <div className="flex items-center justify-center h-full text-gray-300">
+                No Image
+              </div>
+            )}
 
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <div className="bg-black/60 p-4 rounded-full backdrop-blur-md group-hover:bg-black/80 transition">
-                <Play size={30} className="text-yellow-400" />
+            {/* SLIDER DOTS */}
+            {images.length > 1 && (
+              <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-2">
+                {images.map((_, idx) => (
+                  <span
+                    key={idx}
+                    className={`w-2 h-2 rounded-full ${
+                      currentIndex === idx ? "bg-yellow-400" : "bg-gray-600"
+                    }`}
+                  ></span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* title and issuer and award */}
+          <div className="flex justify-between items-start mt-5 gap-3">
+            <div className="text-left flex-1 min-w-0">
+              <h3 className="text-xl font-bold text-white break-words">
+                {title}
+              </h3>
+              <p className="text-sm text-gray-300 mt-1 break-words">{issuer}</p>
+            </div>
+            {award && (
+              <div className="flex items-center gap-2 p-2.5 bg-amber-500/10 border border-amber-400/20 rounded-lg  shrink-0">
+                <Award size={16} className="text-amber-400" />
+                <span className="text-sm text-amber-300 font-semibold whitespace-nowrap">
+                  {award}
+                </span>
+              </div>
+            )}
+          </div>
+
+          {/* DESCRIPTION */}
+          <p className="text-sm text-gray-300 mt-4 leading-relaxed text-left line-clamp-3 break-words">
+            {description}
+          </p>
+
+          {/* VIDEO PREVIEW */}
+          {videoUrl && (
+            <div
+              className="relative w-full h-36 rounded-xl overflow-hidden cursor-pointer mt-5 group"
+              onClick={() => setShowVideoModal(true)}
+            >
+              <iframe
+                src={embedUrl}
+                className="w-full h-full opacity-60 pointer-events-none group-hover:opacity-100 transition"
+                title="Video preview"
+              ></iframe>
+
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="bg-black/60 p-4 rounded-full  group-hover:bg-black/80 transition">
+                  <Play size={30} className="text-yellow-400" />
+                </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
 
-        {/* SKILLS */}
-        {skills.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-4">
-            {skills.slice(0, 4).map((skill, idx) => (
-              <span
-                key={idx}
-                className="px-2 py-1 text-xs bg-white/10 border border-white/20 rounded backdrop-blur break-words"
-              >
-                {skill}
-              </span>
-            ))}
-            {skills.length > 4 && (
-              <span className="px-2 py-1 text-xs bg-white/10 border border-white/20 rounded">
-                +{skills.length - 4}
-              </span>
-            )}
-          </div>
-        )}
+          {/* SKILLS */}
+          {skills.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-4">
+              {skills.slice(0, 4).map((skill, idx) => (
+                <span
+                  key={idx}
+                  className="px-2 py-1 text-xs bg-white/10 border border-white/20 rounded  break-words"
+                >
+                  {skill}
+                </span>
+              ))}
+              {skills.length > 4 && (
+                <span className="px-2 py-1 text-xs bg-white/10 border border-white/20 rounded">
+                  +{skills.length - 4}
+                </span>
+              )}
+            </div>
+          )}
 
-        {/* FOOTER */}
-        <div className="flex items-center justify-between mt-6 gap-3 flex-wrap">
-          {/* DATE */}
-          <div className="flex items-center gap-1.5 text-xs text-gray-300 shrink-0">
-            <Calendar size={14} />
-            {new Date(date).toLocaleDateString("en-US", {
-              month: "short",
-              year: "numeric",
-            })}
-          </div>
-
-          {/* ACTION BUTTONS */}
-          <div className="flex gap-3 flex-wrap">
-            {images.length > 0 && (
-              <button
-                onClick={() => setShowImageModal(true)}
-                className="px-4 py-1.5 text-xs text-white bg-white/10 border border-white/20 hover:bg-white/20 rounded-lg backdrop-blur transition"
-              >
-                View
-              </button>
-            )}
-
-            {credentialUrl && (
-              <a
-                href={credentialUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-1.5 text-xs text-black bg-yellow-400/80 hover:bg-yellow-400 rounded-lg transition font-semibold"
-              >
-                Verify
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-
-      {/* IMAGE MODAL */}
-      {showImageModal && (
-        <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-lg z-50 flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setShowImageModal(false)}
-        >
-          <div
-            className="relative bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl w-full max-w-4xl mx-auto p-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* LEFT ARROW */}
-            {images.length > 1 && (
-              <button
-                onClick={goPrev}
-                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white text-2xl p-2 sm:p-3 rounded-full transition z-10"
-              >
-                ‹
-              </button>
-            )}
-
-            {/* IMAGE CONTAINER */}
-            <div className="w-full flex justify-center items-center">
-              <img
-                src={images[currentIndex]}
-                alt={title}
-                className="max-w-full max-h-[75vh] w-auto h-auto object-contain rounded-xl transition-all duration-500"
-              />
+          {/* FOOTER */}
+          <div className="flex items-center justify-between mt-6 gap-3 flex-wrap">
+            {/* DATE */}
+            <div className="flex items-center gap-1.5 text-xs text-gray-300 shrink-0">
+              <Calendar size={14} />
+              {new Date(date).toLocaleDateString("en-US", {
+                month: "short",
+                year: "numeric",
+              })}
             </div>
 
-            {/* RIGHT ARROW */}
-            {images.length > 1 && (
-              <button
-                onClick={goNext}
-                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-black/60 text-white text-2xl p-2 sm:p-3 rounded-full transition z-10"
-              >
-                ›
-              </button>
-            )}
+            {/* ACTION BUTTONS */}
+            <div className="flex gap-3 flex-wrap">
+              {images.length > 0 && (
+                <button
+                  onClick={() => setShowImageModal(true)}
+                  className="px-4 py-1.5 text-xs text-white bg-white/10 border border-white/20 hover:bg-white/20 rounded-lg  transition"
+                >
+                  View
+                </button>
+              )}
 
-            <button
-              onClick={() => setShowImageModal(false)}
-              className="w-full mt-4 py-3 bg-yellow-500 text-black font-semibold rounded-lg hover:bg-yellow-600 transition"
-            >
-              Close
-            </button>
+              {credentialUrl && (
+                <a
+                  href={credentialUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-1.5 text-xs text-black bg-yellow-400/80 hover:bg-yellow-400 rounded-lg transition font-semibold"
+                >
+                  Verify
+                </a>
+              )}
+            </div>
           </div>
         </div>
+      )}
+      {/* Image Modal */}
+      {showImageModal && (
+        <ImageModal
+          images={images}
+          currentIndex={currentIndex}
+          setCurrentIndex={setCurrentIndex}
+          onClose={() => setShowImageModal(false)}
+        />
       )}
 
       {/* VIDEO MODAL */}
       {showVideoModal && (
-        <div
-          className="fixed inset-0 bg-black/80 backdrop-blur-lg z-50 flex items-center justify-center p-4 sm:p-6"
-          onClick={() => setShowVideoModal(false)}
-        >
-          <div
-            className="bg-black rounded-xl w-full max-w-4xl mx-auto overflow-hidden"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative w-full" style={{ paddingBottom: '56.25%' }}>
-              <iframe
-                src={embedUrl}
-                className="absolute inset-0 w-full h-full"
-                allowFullScreen
-                title="Achievement video"
-              ></iframe>
-            </div>
-
-            <button
-              className="w-full py-3 bg-yellow-500 text-black font-semibold hover:bg-yellow-600 transition"
-              onClick={() => setShowVideoModal(false)}
-            >
-              Close Video
-            </button>
-          </div>
-        </div>
+        <VideoModal
+          embedUrl={embedUrl}
+          onClose={() => setShowVideoModal(false)}
+        />
       )}
     </>
   );

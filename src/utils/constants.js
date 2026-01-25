@@ -4,9 +4,8 @@ export const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:50
 // Personal Information
 export const PERSONAL_INFO = {
   name: 'Rajnath',
-  title: 'Full Stack Developer',
-  tagline: `I specialize in building Full-Stack web applications that are fast, reliable and user-friendly. 
-            Exploring new technologies, refining my skills, and committed to continuous learning—on a journey to enter the IT industry by 2027.`,
+  title: 'Full-Stack Developer building real-world web products.',
+  tagline: `I design and develop scalable, user-focused web applications with clean architecture and modern technologies.`,
   email: 'rajnaths9520@gmail.com',
   github: 'https://github.com/Rajnath9520',
   linkedin: 'https://linkedin.com/in/rajnathsingh9520',
@@ -57,25 +56,36 @@ export const SOCIAL_LINKS = [
 
 // About Stats
 export const ABOUT_STATS = [
-  { value: '4+', label: 'Projects Completed' },
-  { value: '7+', label: 'Technologies' },
-  { value: '0+', label: 'Years Experience' },
+  { value: '4+', label: 'Projects Built & Deployed' },
+  { value: '7+', label: 'Technologies Used' },
+  { value: '..', label: 'Hands-on experience with real-world applications' },
 ];
 
 // Expertise Areas
 export const EXPERTISE_AREAS = [
   {
-    title: 'Full Stack',
-    description: 'React, Node.js, MongoDB, Express, REST APIs',
+    title: 'Full Stack Development',
+    description: "Design and build end-to-end web applications using React, Node.js, Express, and MongoDB with a focus on performance and maintainability",
     icon: 'Code',
     color: 'green',
   },
-  
+  {
+    title: 'Backend & APIs',
+    description: "Develop secure REST APIs, implement authentication and authorization, and design scalable database schemas.",
+    icon: 'Code',
+    color: 'yellow',
+  },
   {
     title: 'Cloud',
-    description: 'AWS, Docker, Cloudinary, Render',
+    description: 'Deploy applications using cloud platforms and containerization tools, ensuring reliability and production readiness.',
     icon: 'Cpu',
     color: 'yellow',
+  },
+  {
+    title: 'UI & User Experience',
+    description: 'Create responsive, accessible, and clean user interfaces that prioritize usability and clarity.',
+    icon: 'UserCheck',
+    color: 'green',
   },
 ];
 

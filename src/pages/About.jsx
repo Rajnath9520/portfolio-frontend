@@ -1,5 +1,5 @@
 import React from 'react';
-import { Code, Brain, Database, Cpu, ArrowRight } from 'lucide-react';
+import { Code, Brain, Database, Cpu, ArrowRight, UserCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ABOUT_STATS, EXPERTISE_AREAS } from '../utils/constants';
 import Reveal from '../components/Reveal'
@@ -11,6 +11,7 @@ const About = () => {
     Code: Code,
     Database: Database,
     Cpu: Cpu,
+    UserCheck:UserCheck,
   };
 
   const colorClasses = {
@@ -36,12 +37,12 @@ const About = () => {
         </Reveal>
 
         {/* Main Content */}
-        <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
+        <div className="grid md:grid-cols-1 gap-12 items-start mb-20">
           {/* Left: Bio */}
           <div className="space-y-6 animate-fade-in-left">
             <Reveal direction="left" delay={0.1}>
-            <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700">
-              <h2 className="text-3xl font-bold mb-6 text-yellow-400">Who I am</h2>
+            <div className="bg-transparent rounded-2xl p-8 border border-gray-700">
+              <h2 className="text-3xl font-bold mb-6 text-yellow-400">I</h2>
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
                   I'm a Full-Stack developer passionate about building intelligent, scalable, and user-centered 
@@ -50,16 +51,12 @@ const About = () => {
                 </p>
                 <p>
                   I’ve built a range of projects, from smart
-                   solutions like Ez-Smart Agriculture (with Team collaboration), to full-stack platforms such as Staymania-A hotel booking website, Milkr-A milk delivery management  with different user role,  full crud operations and complete admin 
+                   solutions like Ez-Smart Agriculture (with Team collaboration), to full-stack platforms such as <b>Staymania-A hotel booking website</b>, <b>Milkr-A milk delivery management</b>  with different user role,  full crud operations and complete admin 
                    dashboards with authentication, content management, and cloud deployment. Each project has helped me
                     refine my problem-solving approach and create cleaner, more scalable applications.
                 </p>
                 <p>
-                  My expertise includes JavaScript ,Tailwind Css, React, Node.js, Express, MongoDB, Python, MySQL
-                  I love crafting clean architectures—whether it's a backend service, or a polished frontend.
-                </p>
-                <p>
-                  Outside of development, I stay focused on exploring new technologies, improving my AI knowledge, and playing badminton to stay balanced.
+                  I enjoy solving real problems through clean code, thoughtful UI, and scalable backend systems, and I’m continuously improving my skills to transition into the IT industry and improving my AI knowledge.
                 </p>
               </div>
             </div>
@@ -71,7 +68,7 @@ const About = () => {
           <div className="space-y-6 animate-fade-in-right">
             
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* <div className="grid grid-cols-1 gap-4">
               {ABOUT_STATS.map((stat, index) => (
                 <div
                   key={index}
@@ -83,10 +80,10 @@ const About = () => {
                   <div className="text-gray-400 text-sm">{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
 
             {/* Expertise Cards */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* <div className="grid grid-cols-2 gap-4">
               {EXPERTISE_AREAS.map((area, index) => {
                 const Icon = iconMap[area.icon];
                 return (
@@ -102,7 +99,7 @@ const About = () => {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
             
           </div>
           </Reveal>
@@ -150,29 +147,34 @@ const About = () => {
           {/* Experience */}
           <Reveal direction="up" delay={0.2}>
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-8 border border-gray-700 animate-fade-in">
-            <h3 className="text-2xl font-bold mb-6 text-yellow-400">Experience</h3>
+            <h3 className="text-2xl font-bold mb-6 text-yellow-400">Practical Experience</h3>
             <div className="space-y-6">
               <div className="border-l-2 border-yellow-400 pl-6">
-                <div className="text-sm text-gray-400 mb-1">0</div>
-                {/* <h4 className="text-xl font-semibold mb-2">
-                  Full Stack Developer
+                <div className="text-sm text-gray-400 mb-1">
+                  
+                </div>
+                <h4 className="text-xl font-semibold mb-2">
+                  Finalist at Navonmesh'25
                 </h4>
-                <p className="text-gray-400 mb-2">Freelance</p>
+                <p className="text-gray-400 mb-2"></p>
                 <ul className="text-sm text-gray-400 space-y-1">
-                  <li>• Built AI-powered applications</li>
-                  <li>• Developed full-stack web solutions</li>
-                  <li>• Implemented ML models in production</li>
-                </ul> */}
+                  <li>• A national-level civic-tech hackathon held at SSIPMT Raipur. 
+                        Our team developed JanBudget, a transparency-driven public budgeting platform, where I contributed to backend development.</li>
+                </ul> 
+              
+              <div className="text-sm text-gray-400 mb-1">
+                  
+                </div>
+                <h4 className="text-xl font-semibold mb-2">
+                  Other Hackathons
+                </h4>
+                <p className="text-gray-400 mb-2"></p>
+                <ul className="text-sm text-gray-400 space-y-1">
+                  <li>• Participated in multiple national-level hackathons, including Smart India Hackathon (2025) selected at
+                    university level in top 5, contributing to solution design and on-ground implementation support.</li>
+                </ul> 
               </div>
-              {/* <div className="border-l-2 border-gray-600 pl-6">
-                <div className="text-sm text-gray-400 mb-1">2022 - 2023</div>
-                <h4 className="text-xl font-semibold mb-2">AI/ML Intern</h4>
-                <p className="text-gray-400 mb-2">Tech Company</p>
-                <ul className="text-sm text-gray-400 space-y-1">
-                  <li>• Worked on computer vision projects</li>
-                  <li>• Developed NLP applications</li>
-                </ul>
-              </div> */}
+              
             </div>
           </div>
           </Reveal>
