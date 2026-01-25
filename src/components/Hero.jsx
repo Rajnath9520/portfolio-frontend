@@ -56,7 +56,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center pt-20 px-6">
+    <section className="md:min-h-screen flex items-center pt-20 px-6 md:">
       <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
 
         {/* Left Content */}

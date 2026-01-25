@@ -18,7 +18,7 @@ const Footer = () => {
             </div>
             <p className="text-gray-400 text-sm">
               Building fast, reliable and 
-              <p>user-friendly web experiences.</p>
+              <span> user-friendly web experiences.</span>
             </p>
             <div className="flex gap-4">
               {SOCIAL_LINKS.map((link) => {
