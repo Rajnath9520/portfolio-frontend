@@ -10,7 +10,7 @@ const Hero = () => {
 
 
   return (
-    <section className="md:min-h-screen flex items-center pt-20 px-6 md:">
+    <section className="min-h-[100svh] flex items-center pt-20 px-6">
       <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6 animate-fade-in-left">
           <div className="text-gray-400 text-lg">Hello,</div>
@@ -31,18 +31,18 @@ const Hero = () => {
           <div className="flex gap-4 pt-4">
             <Link
               to="/contact"
-              className="px-8 py-3 bg-yellow-400 text-black rounded-full font-semibold hover:bg-yellow-500 transition-all flex items-center gap-2 shadow-lg shadow-yellow-400/50"
-            >
-              <Mail size={20} />
+              className="px-8 py-3 text-sm sm:px-6 sm:py-2.5 sm:text-base lg:px-8 lg:py-3 bg-yellow-400 text-black rounded-full 
+              font-semibold hover:bg-yellow-500 transition-all flex items-center gap-2 shadow-lg shadow-yellow-400/50">
+              <Mail size={20} className="sm:size-5" />
               Let’s Build
             </Link>
 
             <a
               href="/Resume.pdf"
               download="Rajnath_Singh_Tomar_Resume.pdf"
-              className="px-8 py-3 border-2 border-yellow-400 text-yellow-400 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all flex items-center gap-2"
-            >
-              <Download size={20} />
+              className="px-5 py-2 text-sm sm:px-6 sm:py-2.5 sm:text-base lg:px-8 lg:py-3 border-2 border-yellow-400 
+              text-yellow-400 rounded-full font-semibold hover:bg-yellow-400 hover:text-black transition-all flex items-center gap-2">
+              <Download size={20} className="sm:size-5" />
               Resume
             </a>
           </div>
@@ -72,7 +72,7 @@ const Hero = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center order-1 lg:order-2">
-          <div className="relative w-full max-w-[320px] h-[360px] overflow-hidden">
+          <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[4/5] overflow-hidden">
             <img
               src={img1}
               className="absolute inset-0 w-full h-full rounded-3xl object-cover shadow-2xl"

@@ -39,7 +39,7 @@ const About = () => {
         {/* Main Content */}
         <div className="grid md:grid-cols-1 gap-12 items-start mb-20">
           {/* Left: Bio */}
-          <div className="space-y-6 animate-fade-in-left">
+          <div className="space-y-6">
             <Reveal direction="left" delay={0.1}>
             <div className="bg-transparent rounded-2xl p-8 border border-gray-700">
               <h2 className="text-3xl font-bold mb-6 text-yellow-400">I</h2>
@@ -65,7 +65,7 @@ const About = () => {
 
           {/* Right: Stats and Expertise */}
           <Reveal direction="right" delay={0.2}>
-          <div className="space-y-6 animate-fade-in-right">
+          <div className="space-y-6">
             
             {/* Stats */}
             {/* <div className="grid grid-cols-1 gap-4">
